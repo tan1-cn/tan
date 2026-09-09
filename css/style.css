@@ -1,0 +1,164 @@
+/* ==========================================================
+   个人名片 —— 样式表（css/style.css）
+   设计风格：简约 · 居中卡片式布局
+   说明　　：本文件与 index.html 分离，负责页面全部外观样式
+   ========================================================== */
+
+/* ---------- 1. 全局重置：统一盒模型，清除默认内外边距 ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- 2. 页面主体 ---------- */
+body {
+    /* 弹性布局：让卡片在屏幕中水平、垂直双方向居中 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 至少占满一屏高度，保证小屏设备上卡片依然居中 */
+    min-height: 100vh;
+
+    /* 浅灰渐变背景，营造简约、干净的氛围 */
+    background: linear-gradient(135deg, #f6f7fb 0%, #eef0f5 100%);
+
+    /* 字体栈：优先系统优雅字体，中文字体按平台回退 */
+    font-family: "Helvetica Neue", Arial, "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+    /* 默认文字颜色 */
+    color: #2b3240;
+}
+
+/* ---------- 3. 名片卡片：居中卡片式布局、12px 圆角、柔和阴影 ---------- */
+.card {
+    width: 360px;          /* 固定宽度，保证“卡片”的视觉效果 */
+    max-width: 90vw;       /* 小屏幕时自适应，避免内容溢出 */
+
+    /* 内边距：上 44 / 左右 32 / 下 36 */
+    padding: 44px 32px 36px;
+
+    background-color: #ffffff;
+
+    /* 卡片圆角：按需求设置为 12px */
+    border-radius: 12px;
+
+    /* 柔和阴影：远处大而淡 + 近处小而深，模拟自然光照 */
+    box-shadow:
+        0 2px 8px  rgba(31, 45, 61, 0.06),
+        0 12px 32px rgba(31, 45, 61, 0.12);
+
+    text-align: center;    /* 卡片内容整体居中 */
+
+    /* 过渡动画：位移、阴影变化时平滑过渡（配合下方悬停效果） */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ---------- 4. 悬停反馈：卡片轻微上浮 + 阴影加深 ---------- */
+.card:hover {
+    transform: translateY(-8px);        /* 卡片向上浮起 8 像素 */
+
+    /* 阴影同步加深，增强“浮起”的层次感 */
+    box-shadow:
+        0 4px 12px  rgba(31, 45, 61, 0.10),
+        0 20px 48px rgba(31, 45, 61, 0.18);
+}
+
+/* ---------- 5. 圆形头像 ---------- */
+.avatar {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;                /* 50% 圆角构成正圆形 */
+
+    background: linear-gradient(135deg, #6a7ff2 0%, #8a5cf6 100%);
+
+    color: #ffffff;
+    font-size: 38px;
+    line-height: 92px;                 /* 行高与高度一致，首字垂直居中 */
+    text-align: center;
+
+    margin: 0 auto 20px;               /* 水平居中，并与下方姓名留出间距 */
+
+    border: 4px solid #ffffff;         /* 白色描边，与卡片背景衔接 */
+    box-shadow: 0 3px 10px rgba(31, 45, 61, 0.12);
+
+    /* 若将头像替换为 <img> 照片，可依靠该声明按圆形裁剪且不变形 */
+    object-fit: cover;
+}
+
+/* ---------- 6. 姓名 ---------- */
+.name {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #1e2530;
+}
+
+/* ---------- 7. 职位 ---------- */
+.position {
+    margin-top: 10px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #8a93a6;
+}
+
+/* ---------- 8. 分隔线（短横线，保持简约） ---------- */
+.divider {
+    width: 56px;
+    margin: 18px auto;                 /* 水平居中 */
+    border: none;
+    border-top: 1px solid #e3e7ee;     /* 仅保留上边框作为细线 */
+}
+
+/* ---------- 9. 联系方式列表 ---------- */
+.contact {
+    list-style: none;                  /* 去掉列表默认圆点 */
+    display: flex;
+    flex-direction: column;            /* 垂直排列 */
+    align-items: center;               /* 居中对齐 */
+    gap: 12px;                         /* 各项之间的间距 */
+}
+
+/* 每一项：图标与文字水平排列 */
+.contact li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #59657a;
+}
+
+/* 图标统一使用更浅的灰色，突出文字内容 */
+.contact .icon {
+    color: #9aa4b8;
+}
+
+/* 联系方式文字（链接）默认样式 */
+.contact a {
+    color: #59657a;
+    text-decoration: none;             /* 去除默认下划线，保持简约 */
+    transition: color 0.2s ease;
+}
+
+/* 联系方式悬停：变为主题色，作为轻量可点击反馈 */
+.contact a:hover {
+    color: #5b6cf1;
+}
+
+/* 键盘导航时给出清晰的焦点框（无障碍细节） */
+a:focus-visible {
+    outline: 2px solid #5b6cf1;
+    outline-offset: 2px;
+}
+
+/* ---------- 10. 动画偏好：系统声明“减少动画”时，关闭上浮效果 ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+    .card:hover {
+        transform: none;
+    }
+}

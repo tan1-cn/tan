@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="张伟 — 全栈开发工程师的个人名片" />
+    <title>个人名片 · 张伟</title>
+
+    <!-- ============================================================
+         文件说明：个人名片页面（仅 HTML 结构）
+         样式说明：所有外观样式独立存放于 css/style.css，实现结构
+                   与样式分离
+         ============================================================ -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- ================= 名片卡片（屏幕居中） ================= -->
+    <main class="card">
+
+        <!-- 圆形头像
+             当前以「姓名首字 + 渐变底色」作为占位头像；
+             如需替换为照片，请将下方 div 改为：
+             <img class="avatar" src="头像图片路径" alt="头像" /> -->
+        <div class="avatar" aria-label="头像">张</div>
+
+        <!-- 姓名 -->
+        <h1 class="name">张伟</h1>
+
+        <!-- 职位 -->
+        <p class="position">全栈开发工程师</p>
+
+        <!-- 分隔线：将「姓名 / 职位」与「联系方式」区分开 -->
+        <hr class="divider" />
+
+        <!-- 联系方式列表 -->
+        <ul class="contact">
+
+            <!-- 电话 -->
+            <li>
+                <!-- 电话图标：内联 SVG，线条风格，与简约主题一致 -->
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" aria-hidden="true">
+                    <!-- 手机机身 -->
+                    <rect x="6" y="3" width="12" height="18" rx="2" />
+                    <!-- 屏幕分隔线 -->
+                    <line x1="8" y1="8" x2="16" y2="8" />
+                </svg>
+                <a href="tel:+8613800000001">138-0000-0000</a>
+            </li>
+
+            <!-- 邮箱 -->
+            <li>
+                <!-- 邮箱图标：信封造型 -->
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" aria-hidden="true">
+                    <!-- 信封主体 -->
+                    <path d="M3 5 h18 v12 h-18 z" />
+                    <!-- 信封封口 -->
+                    <path d="M8 5 L16 5 L12 12 z" />
+                </svg>
+                <a href="mailto:zhang.wei@example.com">zhang.wei@example.com</a>
+            </li>
+
+            <!-- 地址 -->
+            <li>
+                <!-- 位置图标：地图定位针造型 -->
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" aria-hidden="true">
+                    <!-- 定位针头部圆点 -->
+                    <circle cx="12" cy="6" r="4" />
+                    <!-- 定位针针尖 -->
+                    <path d="M8 9 L16 9 L12 21 z" />
+                </svg>
+                <span>成都市.金堂县</span>
+            </li>
+
+        </ul>
+
+    </main>
+
+</body>
+</html>
